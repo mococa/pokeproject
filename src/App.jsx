@@ -5,17 +5,25 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/default.css';
 import './styles/mobile.css';
-//<Pokemon pokedata={currentPokemon}/>
+
 function App() {
     
     const [page, setPage] = useState(0)
     const [pokemons, setPokemons] = useState([]);
     const [currentPokemon, setCurrentPokemon] = useState(null)
     const [loading, setLoading] = useState(false);
-    const [list, showList] = useState(true)
+    const [list, showList] = useState(true) // For when we click on a pokémon. The list turns invisible, and the pokémon we clicked, turns visible.
 
+    // Paginating
+    /*
+        I take the pokémons count, divide by the number of pokémons
+        I want in a page, but I round it upwards, in case the
+        result is not an integer.
+        No pokémon left!
+     */
+    const [pokeCount, setPokeCount] = useState(1118);
     const itemsPerPage = 10;
-    const pokeCount = 1118; // As it says in https://pokeapi.co/api/v2/pokemon
+    
 
 
 
@@ -24,6 +32,7 @@ function App() {
         const api_url = `https://pokeapi.co/api/v2/pokemon?limit=${itemsPerPage}&offset=${page*itemsPerPage}`
         const response = await fetch(api_url)
         const data = await response.json()
+        setPokeCount(data.count)
         setLoading(false);
         setPokemons(data.results)
     }
@@ -31,7 +40,6 @@ function App() {
         const response = await fetch(pokemon.url)
         const pokemon_data = await response.json()
         setCurrentPokemon(pokemon_data);
-        console.log(pokemon_data)
         showList(false);
     }
     function paginate(x){
