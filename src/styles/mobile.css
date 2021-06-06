@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+    .pokemon-row,.page-btns{
+        width:80%;
+    }
+}
