@@ -17,7 +17,7 @@ function App() {
     // Paginating
     /*
         I take the pokémons count, divide by the number of pokémons
-        I want in a page, but I round it upwards, in case the
+        I want in a page, but I round it downwards, in case the
         result is not an integer.
         No pokémon left!
      */
@@ -66,7 +66,7 @@ function App() {
                             {page?<button disabled={loading?true:""} onClick={()=>paginate(-1)}>Prev</button>:null}
                             <button disabled={loading?true:""} onClick={()=>paginate(1)}style={{marginLeft: 'auto'}}>Next</button>
                         </div>
-                        <span style={{marginBottom:'30px'}}>Page {page+1}/{Math.ceil(pokeCount/itemsPerPage)}</span>
+                        <span style={{marginBottom:'30px'}}>Page {page+1}/{Math.floor(pokeCount/itemsPerPage)}</span>
                     </> :
                     <>
                         <span onClick={()=>showList(true)}className="back-btn">Voltar</span>
