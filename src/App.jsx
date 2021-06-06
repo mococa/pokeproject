@@ -34,8 +34,9 @@ function App() {
     },[page])
 
     return (
+        <>
+        <Header/>
         <main>
-            <Header/>
             {
                 list?
                     <>
@@ -44,17 +45,19 @@ function App() {
                                 pokemons.map(x=> <PokemonRow onClick={async()=>await showPoke(x)} key={x.name} pokemonName={x.name}/>)
                             }
                         </div>
-                     <div className="page-btns">
-                        {page?<button onClick={()=>paginate(-1)}>Prev</button>:null}
-                        <button onClick={()=>paginate(1)}>Next</button>
-                    </div> </>    :
+                        <div className="page-btns">
+                            {page?<button onClick={()=>paginate(-1)}>Prev</button>:null}
+                            <button onClick={()=>paginate(1)}>Next</button>
+                        </div>
+                    </> :
                     <>
-                    <span onClick={()=>showList(true)}>Voltar</span>
-                    <Pokemon pokedata={currentPokemon}/>
+                        <span onClick={()=>showList(true)}className="back-btn">Voltar</span>
+                        <Pokemon pokedata={currentPokemon}/>
                    </>
             }
             
         </main>
+        </>
     );
 }
 

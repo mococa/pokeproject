@@ -13,7 +13,20 @@ body {
     height:40px;
     background-color:tomato;
     color:white;
-    font-size: 20px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+.back-btn{
+    padding:10px 20px;
+    background-color: tomato;
+    color:white;
+    display: flex;
+    width:50px;
+    margin:10px;
+    justify-content: center;
+    cursor:pointer;
+    
 }
 .pokemon-container{
     display: flex;
@@ -31,6 +44,30 @@ body {
     place-content: center;
     cursor: pointer;
     text-transform: capitalize;
+}
+.pokemon{
+    padding: 50px;
+    display: flex;
+    gap:20px;
+    flex-flow:column;
+    place-items:center;
+}
+.poke-picture{
+    display: flex;
+    flex-flow:column;
+    gap:10px;
+    place-items:center;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.poke-picture img{
+    width:100px;
+}
+.poke-info{
+    display: flex;
+    flex-flow: column;
+    gap:5px;
+    text-align:center;
 }
 
 .page-btns{
